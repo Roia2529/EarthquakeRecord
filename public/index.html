@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Earthquake Record in the World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="bower_components/d3-layout/d3.layout.cloud.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="bower_components/d3-tip/index.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/padolsey/jQuery-Plugins/master/sortElements/jquery.sortElements.js"></script>
+    <!-- <link rel="stylesheet" href="css/styles.css" /> -->
+</head>
+
+<body>
+    <!-- TEDmap header -->
+    <div class="col-md-12 page-header" id="header">
+        <div class="col-md-8 container">
+        <h1>TEDmap <small> Earthquake Record in the World </small> </h1>
+        </div>
+        <div class="col-md-4 container">
+            <!-- TODO: add links to process book and video-->
+            <a href="https://github.com/cwkenwaysun/TEDmap/blob/master/final_report/ProcessBook_v1.pdf"> <button type="button" class="btn btn-default">Process Book</button></a>
+            <a href="https://youtu.be/cPfT3kuISxQ"><button type="button" class="btn btn-primary">How to Use</button></a>
+        </div>
+        <!--<hr class="col-md-12">    -->    
+    </div>
+
+    <div class="col-md-12 container" id="worldmap" >
+    <h3 >Word Cloud - Category of Tags</h3>
+    <br><br>
+    <!--
+    <ul class="nav nav-tabs" id="ulid">
+      <li id="exploration" role="presentation" ><a href="#">exploration</a></li>
+      <li id="society" role="presentation" class="active"><a href="#">society</a></li>
+      <li id="computers" role="presentation"><a href="#">computers</a></li>
+      <li id="health" role="presentation"><a href="#">health</a></li>
+      <li id="brain" role="presentation"><a href="#">brain</a></li>
+      <li id="culture" role="presentation"><a href="#">culture</a></li>
+      <li id="design" role="presentation"><a href="#">design</a></li>
+      <li id="relationships" role="presentation"><a href="#">relationships</a></li>
+      <li id="future" role="presentation"><a href="#">future</a></li>
+      <li id="other" role="presentation"><a href="#">other</a></li>
+    </ul>
+    <!--
+        <button id="exploration" class="btn" >exploration</button>
+        <button id="society" class="btn" >society</button>
+        <button id="computers" class="btn" >computers</button>
+        <button id="health" class="btn" >health</button>
+        <button id="brain" class="btn" >brain</button>
+        <button id="culture" class="btn" >culture</button>
+        <button id="design" class="btn" >design</button>
+        <button id="relationships" class="btn" >relationships</button>
+        <button id="future" class="btn" >future</button>
+        <button id="other" class="btn" >other</button>
+        -->
+    </div>
+
+    <footer class="footer col-md-12 footstyle">
+
+    <!--Footer Links-->
+    <div class="container" >
+        <div class="row my-4">
+
+            <!--First column-->
+            <div class="col-md-4 col-lg-5">
+                <h5 class="title mb-4 font-bold">Introduction</h5>
+                <p>This website is designed to observe the trendency of tags on TED Talks.</p>
+                <p>Click on text in word cloud or network chart to choose tag and then observe its frequency. Double-click on text in word cloud or network chart to focus on one tag, and its relationship with other tags are visualized as network.</p>
+            </div>
+            <!--/.First column
+
+            <hr class="clearfix w-100 d-md-none">-->
+
+            <!--Second column-->
+            <div class="col-md-4 col-lg-3">
+                <h5 class="title mb-4 font-bold">Amanda Lee</h5>
+                <!--Info-->
+                <p><i class="fa fa-envelope" style="font-size:130%;"></i> indiroia@gmail.com</p>
+                <p><i class="fa fa-github" style="font-size:170%;"></i><a href="https://github.com/Roia2529"> GitHub</a></p>
+                <p><i class="fa fa fa-address-book-o" style="font-size:170%;"></i><a href="https://roia2529.github.io"> Portfolio</a></p>
+            </div>
+            <!--/.Second column
+
+            <hr class="clearfix w-100 d-md-none">-->
+
+            <!--Third column-->
+            <div class="col-md-4 col-lg-3">
+                <h5 class="title mb-4 font-bold">Kenway Sun</h5>
+                <!--Info-->
+                <p><i class="fa fa-envelope" style="font-size:130%;"></i> cwkenwaysun@gmail.com</p>
+                <p><i class="fa fa-github" style="font-size:170%;"></i><a href="https://github.com/cwkenwaysun/"> GitHub</a></p>
+                <p><i class="fa fa fa-address-book-o" style="font-size:170%;"></i><a href="#"> Portfolio</a></p>
+            </div>
+            <!--/.Third column-->
+
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <!--Copyright-->
+    <div class="copyright">
+        <div class="container-fluid">
+            © 2017 Copyright: <a href="https://github.com/cwkenwaysun/TEDmap"> github.com/cwkenwaysun/TEDmap </a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+    <!--<div class="radarChart2 col-md-8" style="display: inline-flex;"></div>-->
+    <script type="application/javascript" src="js/worldchart.js"></script>
+    <script type="application/javascript" src="js/script.js"></script>
+</body>
+
+</html>

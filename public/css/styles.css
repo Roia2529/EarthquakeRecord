@@ -1,0 +1,284 @@
+.highlighted {
+    stroke-width: 5px;
+    color:#ff6600;
+}
+
+text.highlighted {
+    fill: #ff6600;
+}
+
+
+#buttons button {
+    margin-left: 5px; 
+    margin-top: 3px;
+}
+
+div#table_container {
+    height: 600px;
+    border:2px solid #ccc;
+}
+
+  table tbody,table thead {
+    display: block;
+  }
+  table tbody {
+    overflow: auto;
+    height: 585px;
+  }
+
+
+
+
+#buttons li  a{
+    font-weight: bold;
+}
+#buttons li  a span{
+    font-weight: normal;
+}
+
+svg .incloud {
+    cursor:pointer;
+}
+
+svg circle {
+    cursor:pointer;
+}
+
+.table_header {
+    font-size: 150%;
+}
+/*
+#myTable2 tbody.scrollContent {
+  display: block;
+  height: 262px;
+  overflow: auto;
+  width: 100%
+}
+*/
+table.tableHeader{
+
+  margin-bottom: 0px;
+  width: 100%;
+  max-width: 100%;
+
+}
+.tableHeader #tablehead{
+  width: 100%;
+  max-width: 100%;
+  border:2px solid #ccc;
+}
+
+#tablehead th {
+    cursor:pointer;
+    background: #eee;
+}
+
+#myTable2 th {
+    cursor:pointer;
+    background: #eee;
+}
+#myTable2 tr {
+    cursor:pointer;
+}
+
+div.tooltip {
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 400px;
+    border-style: groove;
+    /*padding: 12px;*/
+    background: #FFFFFF;
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    pointer-events: none;
+  }
+
+div .radarChart2 svg {
+    float: left;
+}
+
+.content {
+    display: inline-block;
+    width: 50%;
+}
+#header {
+  margin-bottom: 5px;
+}
+#header hr{
+  width: 98%;
+  border: 0;
+  margin-bottom: 0px; 
+  border-top: 5px solid #e8051d;
+}
+
+.links line{
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+.nodes circle{
+  stroke: #fff;
+  stroke-width: 1.5px;
+  visibility: hidden;
+}
+
+.centerTag{
+  color: black;
+  fill: black;
+  font-size: 20px;
+  font-family: "Comic Sans MS";
+}
+
+.nodes .visible{
+    visibility: visible;
+}
+
+.nodes .selected{
+  stroke: #000;
+  stroke-width: 3px;
+}
+
+.incloud{
+    text-anchor: middle;
+    font-family: "Comic Sans MS";
+}
+
+.incloud:hover{
+    cursor: pointer;
+}
+
+body {
+    font-family: Lato;
+}
+
+#header h1 {
+    font-family: "Arial Black";
+    font-size:35px;
+    color: rgba(255, 0, 0, 0.9);
+    margin: 0px;
+    padding: 0px;
+    margin-left: 20px;
+}
+
+h2{
+    -webkit-margin-before: 5px;
+    -webkit-margin-after:  5px;
+}
+
+.d3-tip {
+    /*line-height: 5;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 200px;
+    border-style: groove;
+    /*padding: 12px;*/
+    background: #FFFFFF;
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    pointer-events: none;
+}
+.tooltip-title{
+    font-size:18px;
+    font-family: "Arial Black";
+
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+    /*box-sizing: border-box;*/
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    /*line-height: 1;*/
+    color: rgba(0, 0, 0, 0.8);
+    position: relative;
+    pointer-events: none;
+}
+
+/* Northward tooltips */
+.d3-tip.n:after {
+    content: "\25BC";
+    /*margin: -1px 0 0 0;*/
+    top: 100%;
+    left: 0;
+    text-align: center;
+}
+
+/* Eastward tooltips */
+.d3-tip.e:after {
+    content: "\26A0";
+    /*margin: -4px 0 0 0;*/
+    top: -800px;
+    left: -8px;
+}
+
+/* Southward tooltips */
+.d3-tip.s:after {
+    content: "\25B2";
+    /*margin: 4px 0 1px 0;*/
+    top: -8px;
+    left: 1481px;
+    text-align: center;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+    content: "\25B6";
+    /*margin: -4px 0 0 -1px;*/
+    top: 50%;
+    left: 100%;
+}
+
+h3{
+    font-family: "Lucida Grande";
+    text-anchor:middle;
+    font-size: 32px;
+}
+
+#tagCloud .btn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  
+  border-color: rgba(255, 255, 255, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.3rem;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s; }
+
+#tagCloud  .btn + .btn {
+    margin-left: 1rem; }
+  @media screen and (min-width: 64em) {
+#tagCloud    .btn {
+      padding: 0.75rem 1rem; } }
+  @media screen and (min-width: 42em) and (max-width: 64em) {
+#tagCloud    .btn {
+      padding: 0.6rem 0.9rem;
+      font-size: 0.9rem; } }
+  @media screen and (max-width: 42em) {
+#tagCloud    .btn {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 0.9rem; }
+      .btn + .btn {
+        margin-top: 1rem;
+        margin-left: 0; } }
+
+.col-md-12.footstyle {
+   margin-top: 20px;
+   background: #787878;
+   color: #E0E0E0;
+   padding-right: 0px;
+   padding-left: 0px;
+} 
+.footstyle a{
+   color: #E0E0E0;
+}
+.footstyle .copyright{
+   background: #3c3c3c;
+   text-align: center;
+} 
+.yearbutton {
+  visibility: hidden;
+}

@@ -6,9 +6,9 @@ class WorldChart {
      * Constructor for text cloud chart
      * @param   data network data, including links and nodes.
      */
-    constructor (data) {
+    constructor (data, geojson) {
         this.Data = data;
-     
+        this.Geojson = geojson;
         // Initializes the svg elements required for this chart
         this.margin = {top: 10, right: 20, bottom: 30, left: 20};
         let divnwChart = d3.select("#worldmap").classed("content", true);
@@ -16,7 +16,7 @@ class WorldChart {
         //fetch the svg bounds
         this.svgBounds = divnwChart.node().getBoundingClientRect();
         this.svgWidth = this.svgBounds.width - this.margin.left - this.margin.right;
-        this.svgHeight = 450;
+        this.svgHeight = 500;
 
         //add the svg to the div
         this.svg = divnwChart.append("svg")
@@ -32,12 +32,7 @@ class WorldChart {
                   .domain(['exploration','society','computers','health','brain','culture','design','relationships','future','other'])
                   .range(d3.range(0,10));  
           
-        // this.sizeScale = d3.scaleLinear()
-        //                 .domain([1, 2386])
-        //                 .range([8, maxT]); 
-        this.update();                
-
-
+        this.update();  
     };
 
     updateButton() {
@@ -84,14 +79,43 @@ class WorldChart {
      * Creates a chart with circles representing each election year, populates text content and other required elements for the Year Chart
      */
     update () {
+        const projection = d3.geoMercator()
+          .scale(130)
+          .translate( [this.svgWidth / 2, this.svgHeight / 1.5]);
 
-        let result = document.getElementById('worldmap');
-        this.Data.forEach( function(d, i) {
-            //console.log(d);
-            result.innerText = result.innerText + d["id"] + "\n";
-        });
+        const path = d3.geoPath().projection(projection);
+        
+        let world_g = this.svg.append('g')
+            .attr('class', 'countries')
+            .selectAll('path')
+            .data(this.Geojson.features);
 
-  }     
+        world_g.enter().append('path')
+              .attr('d', path)
+              .style('fill', '#3c3c3c')
+              .style('stroke', 'white')
+              .style('opacity', 0.8)
+              .style('stroke-width', 0.3);
+              // tooltips
+              // .on('mouseover',function(d){
+              //   tip.show(d);
+              //   d3.select(this)
+              //     .style('opacity', 1)
+              //     .style('stroke-width', 3);
+              // })
+              // .on('mouseout', function(d){
+              //   tip.hide(d);
+              //   d3.select(this)
+              //     .style('opacity', 0.8)
+              //     .style('stroke-width',0.3);
+              // });
+
+          this.svg.append('path')
+            .datum(topojson.mesh(this.Geojson.features, (a, b) => a.id !== b.id))
+            .attr('class', 'names')
+            .attr('d', path);
+
+    }     
 
 
 };

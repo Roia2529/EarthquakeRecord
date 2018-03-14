@@ -1,20 +1,17 @@
-// let tagsInfo;
-// let allData;
-// let buttons;
-// var groupSet = new Set();
-
 let worldChart;
 // let table;
 // var groupIDs;
+queue()
+    .defer(d3.json, 'countries.geo.json')
+    .defer(d3.json, "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02")
+    .await(ready); 
 
-// read tags information data
-d3.json("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02", function (json) {
-    //let tagcloud = d3.select("#tagCloud");
-    //var geoObject = JSON.parse(data);
+function ready(err, geojson, json) {
+    if(err)
+        console.log(err);
     let features = [];
-
+    //console.log(geojson);
     features = json.features;
-    //console.log(features);
     let jproperties = json.features.map(function (d) { 
         let lat = d.geometry.coordinates[0];
         let lon = d.geometry.coordinates[1];
@@ -29,8 +26,8 @@ d3.json("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&startti
         return data; 
 
     });
-    worldChart = new WorldChart(jproperties);
-})
+    worldChart = new WorldChart(jproperties,geojson);
+}   
 
 var pathColorScale = d3.scaleOrdinal() //ten colors
     .domain(d3.range(0, 9))

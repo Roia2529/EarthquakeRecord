@@ -4,8 +4,9 @@ module.exports = function(app) {
   // handle things like api calls
   // authentication routes  
   // sample api route
- app.get('/', function(req, res) {
-      console.log('test');
- });
+   app.get('/', function(req, res) {
+        res.sendFile('index.html');
+        console.log('test');
+   });
 
  };

@@ -31,7 +31,12 @@ class WorldChart {
         this.textScale = d3.scaleOrdinal() //ten colors
                   .domain(['exploration','society','computers','health','brain','culture','design','relationships','future','other'])
                   .range(d3.range(0,10));  
-          
+        
+        this.world_g = this.svg.append('g')
+            .attr('class', 'countries');
+        this.allpath = this.world_g.selectAll('path')
+            .data(this.Geojson.features);
+
         this.update();  
     };
 
@@ -84,13 +89,8 @@ class WorldChart {
           .translate( [this.svgWidth / 2, this.svgHeight / 1.5]);
 
         const path = d3.geoPath().projection(projection);
-        
-        let world_g = this.svg.append('g')
-            .attr('class', 'countries')
-            .selectAll('path')
-            .data(this.Geojson.features);
 
-        world_g.enter().append('path')
+        this.allpath.enter().append('path')
               .attr('d', path)
               .style('fill', '#3c3c3c')
               .style('stroke', 'white')
@@ -109,13 +109,50 @@ class WorldChart {
               //     .style('opacity', 0.8)
               //     .style('stroke-width',0.3);
               // });
-
+          //world_g.append('path')    
           this.svg.append('path')
-            .datum(topojson.mesh(this.Geojson.features, (a, b) => a.id !== b.id))
+            .datum(topojson.mesh(this.Geojson.features, function(a, b) { return a !== b; }))
             .attr('class', 'names')
             .attr('d', path);
+            
+        let eqdata = this.Data;
+        //this.world_g.selectAll('circle').remove();
 
-    }     
+        this.world_g.selectAll('circle')
+                .data(eqdata)
+                .enter().append('circle')
+                .attr("cx", function (d){ 
+                    console.log('any');
+                    return projection(d['pos'])[0]; 
+                })                
+                .attr("cy", (d)=> { return projection(d['pos'])[1]; })
+                .attr("r", "8px")
+                .attr("fill", "red");
+          //this.updateCircle();  
+    } 
+
+    updateCircle(){
+        let rScale = d3.scaleLinear()
+                        .domain([1, 2386])
+                        .range([2, maxT]); 
+
+        let eqdata = this.Data;
+        //this.world_g.selectAll('circle').remove();
+
+        this.world_g.selectAll('circle')
+                .data(eqdata)
+                .enter().append('circle')
+                .attr("cx", function (d){ 
+                    return projection(d['pos'])[0]; 
+                })                
+                .attr("cy", (d)=> { return projection(d['pos'])[1]; })
+                .attr("r", (d)=> { 
+                    console.log(d['properties']);
+                    return 4; 
+                })
+                .attr("fill", "red");
+
+    }    
 
 
 };

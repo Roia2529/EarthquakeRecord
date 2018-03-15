@@ -13,11 +13,12 @@ function ready(err, geojson, json) {
     //console.log(geojson);
     features = json.features;
     let jproperties = json.features.map(function (d) { 
-        let lat = d.geometry.coordinates[0];
-        let lon = d.geometry.coordinates[1];
+        let lat = +d.geometry.coordinates[0];
+        let lon = +d.geometry.coordinates[1];
         let id =  d.id;
-        //console.log(d.id);
+        let pos = [lat, lon];
         let data = {
+            "pos": pos ,
             "lat": lat ,
             "lon": lon,
             "id": id,

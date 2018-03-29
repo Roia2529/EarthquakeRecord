@@ -1,8 +1,10 @@
 {
   "name": "Vis_EarthQuake",
-  "main": "server.js",
   "version": "1.0.0",
   "dependencies": {
-    "express": "~4.5.1"
+    "express": "latest"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }

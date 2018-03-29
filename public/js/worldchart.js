@@ -122,11 +122,13 @@ class WorldChart {
                 .data(eqdata)
                 .enter().append('circle')
                 .attr("cx", function (d){ 
-                    console.log('any');
                     return projection(d['pos'])[0]; 
                 })                
                 .attr("cy", (d)=> { return projection(d['pos'])[1]; })
-                .attr("r", "8px")
+                .attr("r", (d)=> { 
+                    console.log(d['properties']);
+                    return 4; 
+                })
                 .attr("fill", "red");
           //this.updateCircle();  
     } 

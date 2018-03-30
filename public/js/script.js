@@ -1,14 +1,30 @@
+$('#datetimepicker1').datetimepicker({format: 'YYYY/MM/DD'});
+$('#datetimepicker2').datetimepicker({format: 'YYYY/MM/DD'});
+//$('#datetimepicker1').data("DateTimePicker").disabledTimeIntervals();
+//$('#datetimepicker2').data("DateTimePicker").disabledTimeIntervals();
+
+$('#datetimepicker2').datetimepicker({
+    useCurrent: false //Important! See issue #1075
+});
+$("#datetimepicker1").on("dp.change", function (e) {
+    $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+});
+$("#datetimepicker2").on("dp.change", function (e) {
+    $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+});
+
+
 let worldChart;
-// let table;
-// var groupIDs;
 queue()
     .defer(d3.json, 'countries.geo.json')
     .defer(d3.json, "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02")
     .await(ready); 
 
 function ready(err, geojson, json) {
-    if(err)
+    if(err){
         console.log(err);
+        $("#myModal").modal();
+    }
     let features = [];
     //console.log(geojson);
     features = json.features;
@@ -28,6 +44,11 @@ function ready(err, geojson, json) {
 
     });
     worldChart = new WorldChart(jproperties,geojson);
+    $('#getDataBtn').click(function() {
+      worldChart.retriveNewData(); 
+    });
+
+        
 }   
 
 var pathColorScale = d3.scaleOrdinal() //ten colors

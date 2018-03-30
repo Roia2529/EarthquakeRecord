@@ -10,4 +10,7 @@ module.exports = function(app) {
         console.log('test');
    });
 
+   app.post('/signup', function(req, res) {
+        
+    });
  };
